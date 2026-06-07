@@ -1004,7 +1004,13 @@ footer{background:var(--navy);color:#fff;padding:64px 0 36px;}
 (function(){
   var el=document.getElementById('aiTyped');
   if(!el) return;
-  var queries=[
+  var isMobile=window.matchMedia&&window.matchMedia('(max-width:600px)').matches;
+  var queries=isMobile ? [
+    'Find overdue laptops',
+    'Unreturned devices?',
+    'Assets due for audit',
+    'Show idle monitors'
+  ] : [
     'Show all laptops overdue for return in Mumbai',
     'Which monitors were transferred last quarter?',
     'List unassigned devices above \u20B950,000',
