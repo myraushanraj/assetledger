@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 480" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#13293c"></stop>
+      <stop offset="1" stop-color="#0b1c2b"></stop>
+    </linearGradient>
+    <pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.4" fill="#244055"></circle>
+    </pattern>
+  </defs>
+  <rect width="460" height="480" fill="url(#bg)"></rect>
+  <rect width="460" height="480" fill="url(#dots)" opacity="0.55"></rect>
+
+  
+  <g opacity="0.9">
+    <g transform="translate(54 92)">
+      <rect width="150" height="40" rx="10" fill="#16304a" stroke="#2c4d68"></rect>
+      <rect x="14" y="13" width="14" height="14" rx="3" fill="#14a08c"></rect>
+      <rect x="38" y="14" width="74" height="6" rx="3" fill="#3a5871"></rect>
+      <rect x="38" y="24" width="46" height="5" rx="2.5" fill="#2c4660"></rect>
+    </g>
+    <g transform="translate(268 132)">
+      <rect width="150" height="40" rx="10" fill="#16304a" stroke="#2c4d68"></rect>
+      <rect x="14" y="13" width="14" height="14" rx="3" fill="#0d7d6e"></rect>
+      <rect x="38" y="14" width="74" height="6" rx="3" fill="#3a5871"></rect>
+      <rect x="38" y="24" width="46" height="5" rx="2.5" fill="#2c4660"></rect>
+    </g>
+    <g transform="translate(286 322)">
+      <rect width="150" height="40" rx="10" fill="#16304a" stroke="#2c4d68"></rect>
+      <rect x="14" y="13" width="14" height="14" rx="3" fill="#14a08c"></rect>
+      <rect x="38" y="14" width="74" height="6" rx="3" fill="#3a5871"></rect>
+      <rect x="38" y="24" width="46" height="5" rx="2.5" fill="#2c4660"></rect>
+    </g>
+    <g transform="translate(40 338)">
+      <rect width="150" height="40" rx="10" fill="#16304a" stroke="#2c4d68"></rect>
+      <rect x="14" y="13" width="14" height="14" rx="3" fill="#0d7d6e"></rect>
+      <rect x="38" y="14" width="74" height="6" rx="3" fill="#3a5871"></rect>
+      <rect x="38" y="24" width="46" height="5" rx="2.5" fill="#2c4660"></rect>
+    </g>
+  </g>
+
+  
+  <g transform="translate(230 232)">
+    <circle r="92" fill="#0d7d6e" opacity="0.12"></circle>
+    <circle r="68" fill="#0d7d6e" opacity="0.16"></circle>
+    <g transform="translate(-54 -54) scale(2.25)">
+      <path d="M22.6 6.2 7.4 21.4a4 4 0 0 0 0 5.7l13.5 13.5a4 4 0 0 0 5.7 0L41.8 25.4a4 4 0 0 0 1.2-2.8V9.4a4 4 0 0 0-4-4H25.4a4 4 0 0 0-2.8 1.2Z" fill="#ffffff"></path>
+      <circle cx="34" cy="14" r="3.4" fill="#0e2233"></circle>
+      <path d="M22.5 17 16.5 30.5M22.5 17V30.5M22.5 30.5H29.5" stroke="#0e2233" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+      <path d="M19 25.6H22.5" stroke="#0d7d6e" stroke-width="2.8" stroke-linecap="round"></path>
+    </g>
+  </g>
+
+  
+  <text x="230" y="372" text-anchor="middle" font-family="&#39;Segoe UI&#39;,sans-serif" font-size="26" font-weight="700" letter-spacing="-0.3" fill="#ffffff">Asset<tspan fill="#14a08c">Ledger</tspan></text>
+  <text x="230" y="398" text-anchor="middle" font-family="&#39;Segoe UI&#39;,sans-serif" font-size="12.5" font-weight="500" letter-spacing="0.5" fill="#7c93a4">Track every office device</text>
+</svg>

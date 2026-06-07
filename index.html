@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AssetLedger — The First AI-Powered Asset Management Platform</title>
+<meta name="description" content="AssetLedger is the first AI-powered, MCP-native asset management platform. Track every office device through natural language, bulk-upload thousands of assets, and stay audit-ready in seconds.">
+<meta name="keywords" content="asset management, IT asset tracking, office device tracking, bulk upload, AI asset management, MCP, audit-ready, AssetLedger">
+<meta name="author" content="AssetLedger">
+<meta name="theme-color" content="#0e2233">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://assetledger.in/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AssetLedger">
+<meta property="og:title" content="AssetLedger — The First AI-Powered Asset Management Platform">
+<meta property="og:description" content="Track every office device through natural language. MCP-native, AI-first asset management — bulk-upload thousands of assets and stay audit-ready in seconds.">
+<meta property="og:url" content="https://assetledger.in/">
+<meta property="og:locale" content="en_IN">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AssetLedger — The First AI-Powered Asset Management Platform">
+<meta name="twitter:description" content="Track every office device through natural language. MCP-native, AI-first asset management — bulk-upload thousands of assets and stay audit-ready in seconds.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2048%2048'%3E%3Crect%20width='48'%20height='48'%20rx='11'%20fill='%230e2233'/%3E%3Cg%20transform='translate(5.6%206)%20scale(0.76)'%3E%3Cpath%20d='M22.6%206.2%207.4%2021.4a4%204%200%200%200%200%205.7l13.5%2013.5a4%204%200%200%200%205.7%200L41.8%2025.4a4%204%200%200%200%201.2-2.8V9.4a4%204%200%200%200-4-4H25.4a4%204%200%200%200-2.8%201.2Z'%20fill='%23fff'/%3E%3Ccircle%20cx='34'%20cy='14'%20r='3.4'%20fill='%230e2233'/%3E%3Cpath%20d='M22.5%2017%2016.5%2030.5M22.5%2017V30.5M22.5%2030.5H29.5'%20stroke='%230e2233'%20stroke-width='3'%20stroke-linecap='round'%20stroke-linejoin='round'%20fill='none'/%3E%3Cpath%20d='M19%2025.6H22.5'%20stroke='%230d7d6e'%20stroke-width='2.8'%20stroke-linecap='round'%20fill='none'/%3E%3C/g%3E%3C/svg%3E">
+<style>
+:root{
+  --primary:#0d7d6e;            /* teal brand */
+  --primary-dark:#0a6357;
+  --primary-light:#14a08c;
+  --primary-bg:#d8efe9;
+  --primary-bg-soft:#eaf6f3;
+
+  --navy:#0e2233;              /* dark sections */
+  --navy-2:#13293c;
+  --navy-line:#244055;
+
+  --app-bg:#f4f6f7;
+  --surface:#ffffff;
+  --surface-soft:#f7f9f9;
+
+  --border:#dfe4e6;
+  --border-soft:#eceff0;
+
+  --fg-1:#0d1c26;
+  --fg-2:#1f3340;
+  --fg-3:#41535e;
+  --fg-4:#6a7a84;
+  --fg-5:#93a0a8;
+
+  --coral:#e0635a;            /* "cost" stat red */
+
+  --radius:8px;
+  --radius-sm:5px;
+  --radius-pill:999px;
+
+  --font-sans:'Segoe UI',-apple-system,BlinkMacSystemFont,'Tahoma','Geneva','Verdana',sans-serif;
+
+  --maxw:1180px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--font-sans);
+  background:var(--app-bg);
+  color:var(--fg-3);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none;}
+.icon{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;display:block;}
+.icon-sm{width:16px;height:16px;}
+.icon-lg{width:26px;height:26px;}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:15px;font-weight:600;font-family:inherit;
+  border-radius:var(--radius-sm);padding:13px 22px;
+  cursor:pointer;border:1px solid transparent;
+  transition:background .15s ease,border-color .15s ease,color .15s ease,transform .1s ease;
+  line-height:1;white-space:nowrap;
+}
+.btn:active{transform:scale(.98);}
+.btn-primary{background:var(--primary);color:#fff;}
+.btn-primary:hover{background:var(--primary-dark);}
+.btn-outline{background:transparent;color:var(--fg-1);border-color:var(--border);}
+.btn-outline:hover{border-color:var(--fg-4);background:var(--surface-soft);}
+.btn-ghost{background:transparent;color:var(--fg-2);padding:10px 16px;}
+.btn-ghost:hover{color:var(--fg-1);}
+.btn-sm{padding:10px 18px;font-size:14px;}
+
+/* ───────────── Header ───────────── */
+header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(244,246,247,.86);
+  backdrop-filter:saturate(160%) blur(10px);
+  border-bottom:1px solid var(--border);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px;}
+.brand{display:flex;align-items:center;gap:10px;font-size:19px;font-weight:700;color:var(--fg-1);letter-spacing:-.2px;}
+.brand .mark{color:var(--primary);}
+.nav-links{display:flex;align-items:center;gap:34px;}
+.nav-links a{font-size:15px;font-weight:500;color:var(--fg-3);transition:color .15s;}
+.nav-links a:hover{color:var(--fg-1);}
+.nav-actions{display:flex;align-items:center;gap:12px;}
+
+/* ───────────── Hero ───────────── */
+.hero{padding:72px 0 84px;}
+.hero-grid{display:grid;grid-template-columns:1.05fr .92fr;gap:56px;align-items:stretch;}
+.pill{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--primary-bg);color:var(--primary-dark);
+  font-size:13px;font-weight:600;letter-spacing:.2px;
+  padding:7px 14px;border-radius:var(--radius-pill);margin-bottom:26px;white-space:nowrap;
+}
+.pill .dot{width:7px;height:7px;border-radius:50%;background:var(--primary);}
+.hero h1{
+  font-size:54px;line-height:1.08;font-weight:700;letter-spacing:-1.2px;
+  color:var(--fg-1);margin-bottom:24px;text-wrap:balance;
+}
+.hero h1 .accent{color:var(--primary);}
+.hero-sub{font-size:18px;line-height:1.6;color:var(--fg-4);max-width:520px;margin-bottom:34px;}
+.hero-cta{display:flex;gap:14px;margin-bottom:26px;flex-wrap:wrap;}
+.hero-checks{display:flex;gap:28px;flex-wrap:wrap;}
+.hero-checks span{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:var(--fg-3);}
+.hero-checks .icon{color:var(--primary);}
+
+/* AI-first hero elements */
+.pill.pill-ai{background:var(--navy);color:#fff;gap:9px;padding:8px 15px;}
+.pill.pill-ai .spark{width:14px;height:14px;color:var(--primary-light);animation:alSpark 2.4s ease-in-out infinite;}
+.pill.pill-ai .new{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);background:var(--primary-light);padding:2px 7px;border-radius:var(--radius-pill);}
+@keyframes alSpark{0%,100%{opacity:.55;transform:scale(.86) rotate(0);}50%{opacity:1;transform:scale(1.12) rotate(90deg);}}
+
+.ai-bar{
+  display:flex;align-items:center;gap:12px;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:15px 16px;margin-bottom:22px;max-width:540px;
+  box-shadow:0 10px 30px -22px rgba(14,34,51,.45);
+}
+.ai-bar .ai-spark{width:20px;height:20px;flex:0 0 auto;color:var(--primary);}
+.ai-bar .ai-q{flex:1;min-width:0;font-size:15.5px;color:var(--fg-2);font-weight:500;white-space:nowrap;overflow:hidden;}
+.ai-bar .ai-cursor{display:inline-block;width:2px;height:1.05em;vertical-align:-2px;background:var(--primary);margin-left:1px;animation:alBlink 1s steps(1) infinite;}
+@keyframes alBlink{50%{opacity:0;}}
+.ai-bar .ai-mcp{
+  flex:0 0 auto;font-size:11px;font-weight:700;letter-spacing:.06em;
+  color:var(--primary-dark);background:var(--primary-bg);
+  padding:5px 9px;border-radius:var(--radius-sm);
+}
+
+.ai-chips{display:flex;gap:10px;flex-wrap:wrap;}
+.ai-chip{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13.5px;font-weight:600;color:var(--fg-2);
+  background:var(--surface);border:1px solid var(--border);
+  padding:9px 14px;border-radius:var(--radius-pill);
+  transition:border-color .15s,transform .15s,box-shadow .15s;
+}
+.ai-chip:hover{border-color:var(--primary-light);transform:translateY(-2px);box-shadow:0 8px 18px -14px rgba(13,125,110,.6);}
+.ai-chip svg{width:16px;height:16px;color:var(--primary);flex:0 0 auto;}
+
+/* hero stat grid */
+.hero-panel{
+  background:var(--surface);border:1px solid var(--border);border-radius:14px;
+  box-shadow:0 18px 48px -28px rgba(14,34,51,.35);
+  display:flex;flex-direction:column;overflow:hidden;align-self:stretch;
+}
+.hp-head{display:flex;align-items:center;gap:10px;padding:15px 18px;border-bottom:1px solid var(--border-soft);}
+.hp-dots{display:flex;gap:5px;}
+.hp-dots i{width:9px;height:9px;border-radius:50%;background:var(--border);display:block;}
+.hp-title{font-size:13px;font-weight:600;color:var(--fg-3);letter-spacing:.1px;}
+.hp-live{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--primary-dark);background:var(--primary-bg);padding:4px 10px;border-radius:var(--radius-pill);}
+.hp-live .dot{width:7px;height:7px;border-radius:50%;background:var(--primary);animation:alPing 2.1s ease-out infinite;}
+
+.hp-ai{margin:18px 18px 4px;padding:16px 16px 17px;border-radius:11px;background:var(--primary-bg-soft);border:1px solid var(--primary-bg);}
+.hp-ai-q{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:600;color:var(--fg-2);}
+.hp-ai-q svg{width:17px;height:17px;color:var(--primary);flex:0 0 auto;}
+.hp-ai-a{margin-top:11px;display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;font-size:14px;color:var(--fg-4);line-height:1.3;}
+.hp-ai-num{font-size:27px;font-weight:800;color:var(--fg-1);letter-spacing:-.6px;line-height:1;}
+.hp-ai-mcp{font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--primary-dark);background:var(--primary-bg);padding:3px 8px;border-radius:var(--radius-sm);white-space:nowrap;}
+
+.hero-cards{
+  padding:18px;display:grid;grid-template-columns:1fr 1fr;gap:14px;flex:1;align-content:stretch;
+}
+.hcard{border:1px solid var(--border-soft);border-radius:11px;padding:20px;background:var(--surface-soft);display:flex;flex-direction:column;justify-content:center;}
+.hcard .ic{width:42px;height:42px;border-radius:10px;background:var(--primary-bg);color:var(--primary);display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+.hcard .big{font-size:22px;font-weight:700;color:var(--fg-1);letter-spacing:-.4px;line-height:1.1;}
+.hcard .lbl{font-size:13px;color:var(--fg-4);margin-top:3px;}
+
+/* ───────────── Cost band (dark) ───────────── */
+.band-dark{background:var(--navy);color:#fff;padding:78px 0;}
+.band-dark .center{text-align:center;max-width:780px;margin:0 auto;}
+.band-dark h2{font-size:34px;font-weight:700;color:#fff;letter-spacing:-.6px;margin-bottom:18px;}
+.band-dark .lead{font-size:17px;color:#a9bccb;line-height:1.6;margin-bottom:54px;}
+.cost-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;max-width:760px;margin:0 auto;}
+.cstat .num{font-size:46px;font-weight:800;color:var(--coral);letter-spacing:-1px;line-height:1;}
+.cstat .desc{font-size:14px;color:#9fb2c2;margin-top:12px;line-height:1.5;}
+
+/* ───────────── Section base ───────────── */
+.section{padding:92px 0;}
+.section-head{text-align:center;max-width:680px;margin:0 auto 56px;}
+.section-head h2{font-size:36px;font-weight:700;color:var(--fg-1);letter-spacing:-.8px;margin-bottom:14px;}
+.section-head p{font-size:18px;color:var(--fg-4);}
+
+/* feature grid */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.feat-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:30px 28px;transition:border-color .15s ease,transform .15s ease,box-shadow .15s ease;
+}
+.feat-card:hover{border-color:var(--primary-light);transform:translateY(-3px);box-shadow:0 14px 34px -22px rgba(14,34,51,.4);}
+.feat-card .ic{width:46px;height:46px;border-radius:10px;background:var(--primary-bg);color:var(--primary);display:flex;align-items:center;justify-content:center;margin-bottom:22px;}
+.feat-card h3{font-size:19px;font-weight:700;color:var(--fg-1);margin-bottom:11px;letter-spacing:-.2px;}
+.feat-card p{font-size:15px;color:var(--fg-4);line-height:1.6;}
+
+/* industries */
+.section-alt{background:#eef1f2;}
+.ind-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:22px;}
+.ind-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:30px 28px;}
+.ind-card .ic{width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:22px;}
+.ic-blue{background:#e3edf8;color:#2c6fb0;}
+.ic-green{background:var(--primary-bg);color:var(--primary);}
+.ic-violet{background:#ece6f7;color:#6b54b0;}
+.ic-rose{background:#f7e4e6;color:#b34a5d;}
+.ind-card h3{font-size:21px;font-weight:700;color:var(--fg-1);margin-bottom:13px;letter-spacing:-.3px;}
+.ind-card>p{font-size:15px;color:var(--fg-4);line-height:1.6;margin-bottom:22px;}
+.ind-list{display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--border-soft);padding-top:20px;}
+.ind-list li{display:flex;align-items:center;gap:10px;font-size:14.5px;color:var(--fg-3);list-style:none;}
+.ind-list .icon{color:var(--primary);flex-shrink:0;}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative;}
+.steps::before{content:"";position:absolute;top:30px;left:12.5%;right:12.5%;height:2px;background:var(--border);z-index:0;}
+.step{text-align:center;position:relative;z-index:1;}
+.step .circle{
+  width:60px;height:60px;border-radius:50%;background:var(--primary);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;
+  margin:0 auto 22px;border:4px solid var(--app-bg);
+}
+.step h3{font-size:18px;font-weight:700;color:var(--fg-1);margin-bottom:10px;}
+.step p{font-size:14.5px;color:var(--fg-4);line-height:1.55;max-width:230px;margin:0 auto;}
+
+/* advanced dark */
+.adv{background:var(--navy);color:#fff;padding:96px 0;}
+.adv-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+.adv h2{font-size:36px;font-weight:700;color:#fff;letter-spacing:-.8px;margin-bottom:38px;line-height:1.12;}
+.adv-item{display:flex;gap:18px;margin-bottom:30px;}
+.adv-item .ic{width:44px;height:44px;border-radius:10px;background:rgba(20,160,140,.16);color:var(--primary-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.adv-item h3{font-size:17px;font-weight:700;color:#fff;margin-bottom:7px;}
+.adv-item p{font-size:14.5px;color:#a9bccb;line-height:1.55;}
+.adv-panel{background:var(--navy-2);border:1px solid var(--navy-line);border-radius:14px;padding:32px;}
+.metric{margin-bottom:26px;}
+.metric:last-child{margin-bottom:0;}
+.metric-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:11px;}
+.metric-top .name{font-size:14.5px;color:#bcccd8;}
+.metric-top .val{font-size:22px;font-weight:700;color:#fff;letter-spacing:-.4px;}
+.metric-top .val.good{color:var(--primary-light);}
+.bar{height:9px;border-radius:99px;background:rgba(255,255,255,.1);overflow:hidden;}
+.bar>span{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--primary),var(--primary-light));}
+
+/* demo form */
+.demo-section{padding:96px 0;background:var(--app-bg);}
+.demo-card{
+  max-width:760px;margin:0 auto;background:var(--surface-soft);
+  border:1px solid var(--border);border-radius:16px;padding:52px 56px;
+}
+.demo-card .dhead{text-align:center;margin-bottom:38px;}
+.demo-card h2{font-size:32px;font-weight:700;color:var(--fg-1);letter-spacing:-.6px;margin-bottom:12px;}
+.demo-card .dhead p{font-size:16.5px;color:var(--fg-4);}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:24px;}
+.field label{display:block;font-size:14px;font-weight:600;color:var(--fg-2);margin-bottom:8px;}
+.field label .req{color:var(--coral);}
+.field-full{grid-column:1 / -1;}
+.field input,.field textarea{
+  width:100%;font-family:inherit;font-size:15px;color:var(--fg-1);
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);
+  padding:13px 14px;transition:border-color .15s,box-shadow .15s;
+}
+.field textarea{resize:vertical;min-height:104px;line-height:1.55;}
+.field input::placeholder,.field textarea::placeholder{color:var(--fg-5);}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(13,125,110,.12);}
+
+/* error state */
+.field.error input,.field.error textarea{border-color:var(--coral);background:#fdf3f2;}
+.field.error input:focus,.field.error textarea:focus{box-shadow:0 0 0 3px rgba(224,99,90,.16);}
+.field .err{
+  display:flex;align-items:center;gap:6px;
+  font-size:13px;font-weight:500;color:var(--coral);
+  max-height:0;opacity:0;margin-top:0;overflow:hidden;
+  transition:max-height .25s ease,opacity .25s ease,margin-top .25s ease;
+}
+.field .err svg{width:14px;height:14px;flex:0 0 auto;}
+.field.error .err{max-height:32px;opacity:1;margin-top:7px;}
+.field.error input,.field.error textarea{animation:alShake .4s cubic-bezier(.36,.07,.19,.97);}
+@keyframes alShake{10%,90%{transform:translateX(-2px);}20%,80%{transform:translateX(3px);}30%,50%,70%{transform:translateX(-5px);}40%,60%{transform:translateX(5px);}}
+
+.demo-submit{width:100%;justify-content:center;font-size:16px;padding:15px;margin-top:4px;}
+.demo-note{text-align:center;font-size:13.5px;color:var(--fg-5);margin-top:18px;}
+.form-success{
+  display:none;text-align:center;padding:30px 24px;
+  background:var(--primary-bg-soft);border:1px solid var(--primary-bg);border-radius:var(--radius);
+}
+.form-success.show{display:block;animation:alFadeUp .5s cubic-bezier(.2,.7,.2,1) both;}
+@keyframes alFadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+.form-success .sic{width:52px;height:52px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;}
+.form-success h3{font-size:20px;color:var(--fg-1);margin-bottom:8px;font-weight:700;}
+.form-success p{font-size:15px;color:var(--fg-4);}
+
+/* footer */
+footer{background:var(--navy);color:#fff;padding:64px 0 36px;}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;padding-bottom:40px;border-bottom:1px solid var(--navy-line);}
+.foot-brand .brand{color:#fff;margin-bottom:16px;}
+.foot-brand p{font-size:14.5px;color:#94a8b6;max-width:280px;line-height:1.6;}
+.foot-col h4{font-size:13px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.8px;margin-bottom:18px;}
+.foot-col a{display:block;font-size:14.5px;color:#a9bccb;margin-bottom:12px;transition:color .15s;}
+.foot-col a:hover{color:#fff;}
+.foot-bottom{text-align:center;padding-top:30px;font-size:13.5px;color:#7c91a0;}
+
+@media(max-width:960px){
+  .hero-grid,.adv-grid{grid-template-columns:1fr;gap:44px;}
+  .feat-grid,.ind-grid{grid-template-columns:1fr;}
+  .cost-stats,.steps{grid-template-columns:1fr 1fr;gap:36px;}
+  .steps::before{display:none;}
+  .form-grid{grid-template-columns:1fr;}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:32px;}
+  .nav-links{display:none;}
+  .hero h1{font-size:40px;}
+}
+
+/* ───────────── Hero animations ───────────── */
+.anim-ready .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s);}
+.anim-ready.loaded .reveal{opacity:1;transform:none;}
+
+/* scroll-triggered reveals for lower sections */
+.anim-ready .scroll-reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--sd,0s);}
+.anim-ready .scroll-reveal.in{opacity:1;transform:none;}
+
+@keyframes alPing{0%{box-shadow:0 0 0 0 rgba(13,125,110,.5);}70%{box-shadow:0 0 0 8px rgba(13,125,110,0);}100%{box-shadow:0 0 0 0 rgba(13,125,110,0);}}
+.pill .dot{animation:alPing 2.1s ease-out infinite;}
+
+/* flowing "live signal" along the Real-time card waveform */
+.pulse-ico path{stroke-dasharray:13 64;animation:alFlow 1.7s linear infinite;}
+@keyframes alFlow{to{stroke-dashoffset:-77;}}
+
+.hcard{transition:border-color .15s ease,transform .25s ease,box-shadow .25s ease,opacity .7s cubic-bezier(.2,.7,.2,1);}
+.hcard:hover{border-color:var(--primary-light);transform:translateY(-3px);box-shadow:0 12px 28px -20px rgba(14,34,51,.45);}
+
+@media (prefers-reduced-motion: reduce){
+  .anim-ready .reveal,.anim-ready .scroll-reveal{opacity:1 !important;transform:none !important;transition:none !important;}
+  .pill .dot,.pulse-ico path,.pill-ai .spark,.ai-bar .ai-cursor{animation:none !important;}
+}
+
+/* ───────────── Promo popup ───────────── */
+.promo-overlay{
+  position:fixed;inset:0;z-index:200;
+  display:flex;align-items:center;justify-content:center;padding:24px;
+  background:rgba(9,22,33,.6);backdrop-filter:saturate(140%) blur(3px);
+  opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease;
+}
+.promo-overlay.open{opacity:1;visibility:visible;}
+.promo-modal{
+  position:relative;width:100%;max-width:860px;
+  display:grid;grid-template-columns:1fr 1fr;
+  background:var(--surface);border-radius:14px;overflow:hidden;
+  box-shadow:0 30px 80px -24px rgba(9,22,33,.55);
+  transform:translateY(16px) scale(.965);opacity:0;
+  transition:transform .42s cubic-bezier(.2,.8,.25,1),opacity .42s ease;
+}
+.promo-overlay.open .promo-modal{transform:none;opacity:1;}
+
+/* visual side */
+.promo-visual{position:relative;background:var(--navy);min-height:420px;}
+.promo-visual image-slot{position:absolute;inset:0;width:100%;height:100%;}
+.promo-ribbon{
+  position:absolute;top:18px;left:18px;z-index:3;
+  display:inline-flex;align-items:center;gap:7px;white-space:nowrap;
+  background:var(--coral);color:#fff;
+  font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:7px 13px;border-radius:var(--radius-pill);
+  box-shadow:0 6px 18px -8px rgba(224,99,90,.8);
+}
+.promo-ribbon .dot{width:7px;height:7px;border-radius:50%;background:#fff;animation:alPing 2.1s ease-out infinite;}
+
+/* content side */
+.promo-body{padding:46px 44px 40px;display:flex;flex-direction:column;justify-content:center;}
+.promo-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;align-self:flex-start;white-space:nowrap;
+  font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--primary);background:var(--primary-bg-soft);
+  padding:6px 12px;border-radius:var(--radius-pill);margin-bottom:20px;
+}
+.promo-off{display:flex;align-items:baseline;gap:10px;margin-bottom:6px;line-height:1;}
+.promo-off .num{font-size:74px;font-weight:800;color:var(--fg-1);letter-spacing:-.03em;}
+.promo-off .num .pct{font-size:42px;font-weight:700;color:var(--primary);}
+.promo-off .off-word{font-size:30px;font-weight:800;color:var(--primary);letter-spacing:-.01em;text-transform:uppercase;}
+.promo-body h2{font-size:21px;font-weight:700;color:var(--fg-1);letter-spacing:-.01em;margin-bottom:10px;line-height:1.25;}
+.promo-body p{font-size:15px;color:var(--fg-4);line-height:1.6;margin-bottom:24px;}
+.promo-form{display:flex;gap:10px;margin-bottom:14px;}
+.promo-form input{
+  flex:1;min-width:0;font-family:inherit;font-size:15px;color:var(--fg-1);
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:13px 14px;
+  transition:border-color .15s,box-shadow .15s;
+}
+.promo-form input::placeholder{color:var(--fg-5);}
+.promo-form input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(13,125,110,.12);}
+.promo-fine{font-size:12.5px;color:var(--fg-5);display:flex;align-items:center;gap:6px;}
+.promo-fine svg{width:14px;height:14px;flex:0 0 auto;color:var(--primary);}
+.promo-claimed{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;color:var(--primary);}
+.promo-claimed svg{width:20px;height:20px;flex:0 0 auto;}
+.promo-close{
+  position:absolute;top:14px;right:14px;z-index:5;
+  width:36px;height:36px;border-radius:50%;border:none;cursor:pointer;
+  background:rgba(255,255,255,.92);color:var(--fg-2);
+  display:flex;align-items:center;justify-content:center;
+  transition:background .15s,transform .15s,color .15s;
+}
+.promo-close:hover{background:#fff;color:var(--fg-1);transform:rotate(90deg);}
+.promo-close svg{width:18px;height:18px;}
+
+@media (max-width:720px){
+  .promo-modal{grid-template-columns:1fr;max-width:420px;}
+  .promo-visual{min-height:190px;}
+  .promo-body{padding:34px 26px 30px;}
+  .promo-off .num{font-size:60px;}
+  .promo-close{background:rgba(255,255,255,.92);}
+}
+@media (prefers-reduced-motion: reduce){
+  .promo-modal{transition:opacity .2s ease;transform:none;}
+  .promo-ribbon .dot{animation:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ HEADER ═══════════ -->
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 48 48" fill="none" style="width:32px;height:32px;display:block;flex:0 0 auto;">
+        <path d="M22.6 6.2 7.4 21.4a4 4 0 0 0 0 5.7l13.5 13.5a4 4 0 0 0 5.7 0L41.8 25.4a4 4 0 0 0 1.2-2.8V9.4a4 4 0 0 0-4-4H25.4a4 4 0 0 0-2.8 1.2Z" fill="#0e2233"/>
+        <circle cx="34" cy="14" r="3.4" fill="#fff"/>
+        <path d="M22.5 17 16.5 30.5M22.5 17V30.5M22.5 30.5H29.5" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M19 25.6H22.5" stroke="#0d7d6e" stroke-width="2.8" stroke-linecap="round"/>
+      </svg>
+      <span>Asset<span class="mark">Ledger</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#industries">Industries</a>
+      <a href="#how">How It Works</a>
+      <a href="#demo">Request Demo</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn btn-outline btn-sm" href="https://app.assetledger.in/login">Sign In</a>
+      <a class="btn btn-primary btn-sm" href="#demo">Get Demo</a>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="pill pill-ai reveal" style="--d:0s"><svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6L12 2z"/></svg>The First AI-Powered Asset Platform <span class="new">New</span></span>
+      <h1 class="reveal" style="--d:.09s">The First <span class="accent">AI-Powered</span> Asset Management Platform</h1>
+      <p class="hero-sub reveal" style="--d:.18s">Track and manage every office device through plain language. AssetLedger is MCP-native — ask questions, bulk-upload thousands of assets, and get audit-ready answers in seconds, all powered by AI.</p>
+      <div class="ai-bar reveal" style="--d:.27s" aria-hidden="true">
+        <svg class="ai-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.2"/></svg>
+        <span class="ai-q"><span id="aiTyped"></span><span class="ai-cursor"></span></span>
+        <span class="ai-mcp">MCP</span>
+      </div>
+      <div class="hero-cta reveal" style="--d:.36s">
+        <a class="btn btn-primary" href="#demo">Request Free Demo
+          <svg class="icon-sm" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <a class="btn btn-outline" href="#features">Explore Features</a>
+      </div>
+      <div class="ai-chips reveal" style="--d:.45s">
+        <span class="ai-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18M3 12h12M3 19h18"/></svg>Natural Language</span>
+        <span class="ai-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2v6M15 2v6M7 8h10v3a5 5 0 0 1-10 0z"/><path d="M12 16v6"/></svg>MCP-Native</span>
+        <span class="ai-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/><path d="M9.5 9.5h5v5h-5z"/></svg>AI-First</span>
+      </div>
+    </div>
+
+    <div class="hero-panel reveal" style="--d:.3s">
+      <div class="hp-head">
+        <span class="hp-dots"><i></i><i></i><i></i></span>
+        <span class="hp-title">Asset Overview</span>
+        <span class="hp-live"><span class="dot"></span>Live</span>
+      </div>
+      <div class="hp-ai">
+        <div class="hp-ai-q">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6L12 2z"/></svg>
+          "How many laptops are unreturned?"
+        </div>
+        <div class="hp-ai-a">
+          <span class="hp-ai-num">128</span>
+          <span>devices flagged across 6 branches</span>
+          <span class="hp-ai-mcp">via MCP</span>
+        </div>
+      </div>
+      <div class="hero-cards">
+        <div class="hcard reveal" style="--d:.32s">
+          <div class="ic"><svg class="icon-lg" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8"/><path d="M8 13h6"/></svg></div>
+          <div class="big" id="statDevices" data-count="10000" data-suffix="+">10,000+</div>
+          <div class="lbl">Devices per upload</div>
+        </div>
+        <div class="hcard reveal" style="--d:.42s">
+          <div class="ic"><svg class="icon-lg pulse-ico" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+          <div class="big">Real-time</div>
+          <div class="lbl">Location tracking</div>
+        </div>
+        <div class="hcard reveal" style="--d:.52s">
+          <div class="ic"><svg class="icon-lg" viewBox="0 0 24 24"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <div class="big">Audit-Ready</div>
+          <div class="lbl">Immutable logs</div>
+        </div>
+        <div class="hcard reveal" style="--d:.62s">
+          <div class="ic"><svg class="icon-lg" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></div>
+          <div class="big">Every</div>
+          <div class="lbl">Device type</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ COST BAND ═══════════ -->
+<section class="band-dark">
+  <div class="wrap">
+    <div class="center scroll-reveal">
+      <h2>The Cost of Untracked Devices</h2>
+      <p class="lead">Organizations lose track of nearly a third of their hardware to manual spreadsheets, missed handovers, and unrecorded transfers. Don't let your office devices become unaccounted liabilities.</p>
+    </div>
+    <div class="cost-stats">
+      <div class="cstat scroll-reveal">
+        <div class="num">30%</div>
+        <div class="desc">Of office hardware goes untracked or unaccounted for</div>
+      </div>
+      <div class="cstat scroll-reveal">
+        <div class="num">$1.8M</div>
+        <div class="desc">Average annual loss from lost and ghost assets</div>
+      </div>
+      <div class="cstat scroll-reveal">
+        <div class="num">40hrs</div>
+        <div class="desc">Wasted monthly on manual inventory reconciliation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FEATURES ═══════════ -->
+<section class="section" id="features">
+  <div class="wrap">
+    <div class="section-head scroll-reveal">
+      <h2>Everything You Need to Track Office Devices</h2>
+      <p>From bulk import to retirement, manage every device with precision and full accountability.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card scroll-reveal">
+        <div class="ic"><svg class="icon-lg" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg></div>
+        <h3>Bulk Upload</h3>
+        <p>Import thousands of devices in one go from Excel or CSV. Smart column mapping and duplicate detection get your inventory live in minutes.</p>
+      </div>
+      <div class="feat-card scroll-reveal">
+        <div class="ic"><svg class="icon-lg" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></div>
+        <h3>Full Device Coverage</h3>
+        <p>Track laptops, desktops, monitors, phones, tablets, and peripherals — every category of office hardware in one unified registry.</p>
+      </div>
+      <div class="feat-card scroll-reveal">
+        <div class="ic"><svg class="icon-lg" viewBox="0 0 24 24"><path d="M14 9V5a3 3 0 0 0-6 0v4"/><rect x="2" y="9" width="20" height="11" rx="2"/></svg></div>
+        <h3>Comprehensive Audit Logs</h3>
+        <p>Every assignment, movement, and status change is automatically logged with timestamp, user, and reason. Tamper-proof and audit-ready.</p>
+      </div>
+      <div class="feat-card scroll-reveal">
+        <div class="ic"><svg class="icon-lg" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/><path d="M16 2l4 2-2 4"/></svg></div>
+        <h3>Lifecycle Management</h3>
+        <p>Follow each device from procurement and deployment through maintenance, reassignment, and retirement with automated workflows.</p>
+      </div>
+      <div class="feat-card scroll-reveal">
+        <div class="ic"><svg class="icon-lg" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>MS Intune Integration</h3>
+        <p>Sync your entire managed device fleet from Microsoft Intune with one-click import — hardware specs, software, and user assignments included.</p>
+      </div>
+      <div class="feat-card scroll-reveal">
+        <div class="ic"><svg class="icon-lg" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <h3>Movement Tracking</h3>
+        <p>Real-time location and ownership tracking with transfer workflows and automated notifications for every device handover.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ INDUSTRIES ═══════════ -->
+<section class="section section-alt" id="industries">
+  <div class="wrap">
+    <div class="section-head scroll-reveal">
+      <h2>Built for Every Office Environment</h2>
+      <p>Specialized device tracking for teams where accountability isn't optional.</p>
+    </div>
+    <div class="ind-grid">
+      <div class="ind-card scroll-reveal">
+        <div class="ic ic-green"><svg class="icon-lg" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></div>
+        <h3>IT &amp; Operations</h3>
+        <p>Manage the full hardware fleet across offices, remote staff, and storage — from issue to recovery.</p>
+        <ul class="ind-list">
+          <li><svg class="icon-sm icon" viewBox="0 0 24 24"><path d="m5 12 5 5 9-9"/></svg>Bulk device onboarding</li>
+          <li><svg class="icon-sm icon" viewBox="0 0 24 24"><path d="m5 12 5 5 9-9"/></svg>Warranty &amp; lifecycle alerts</li>
+          <li><svg class="icon-sm icon" viewBox="0 0 24 24"><path d="m5 12 5 5 9-9"/></svg>Intune synchronization</li>
+        </ul>
+      </div>
+      <div class="ind-card scroll-reveal">
+        <div class="ic ic-blue"><svg class="icon-lg" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>HR &amp; People Ops</h3>
+        <p>Tie devices to employees with clean onboarding and offboarding handovers and sign-off trails.</p>
+        <ul class="ind-list">
+          <li><svg class="icon-sm icon" viewBox="0 0 24 24"><path d="m5 12 5 5 9-9"/></svg>Employee assignment</li>
+          <li><svg class="icon-sm icon" viewBox="0 0 24 24"><path d="m5 12 5 5 9-9"/></svg>Offboarding recovery</li>
+          <li><svg class="icon-sm icon" viewBox="0 0 24 24"><path d="m5 12 5 5 9-9"/></svg>Acknowledgement logs</li>
+        </ul>
+      </div>
+      <div class="ind-card scroll-reveal">
+        <div class="ic ic-violet"><svg class="icon-lg" viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9h.01M9 12h.01M9 15h.01M9 18h.01"/></svg></div>
+        <h3>Finance &amp; Compliance</h3>
+        <p>Keep audit-ready asset registers with accurate depreciation, ownership, and movement history.</p>
+        <ul class="ind-list">
+          <li><svg class="icon-sm icon" viewBox="0 0 24 24"><path d="m5 12 5 5 9-9"/></svg>Depreciation tracking</li>
+          <li><svg class="icon-sm icon" viewBox="0 0 24 24"><path d="m5 12 5 5 9-9"/></svg>Audit-ready exports</li>
+          <li><svg class="icon-sm icon" viewBox="0 0 24 24"><path d="m5 12 5 5 9-9"/></svg>Cost-center allocation</li>
+        </ul>
+      </div>
+      <div class="ind-card scroll-reveal">
+        <div class="ic ic-rose"><svg class="icon-lg" viewBox="0 0 24 24"><path d="M3 12h4l2 5 4-10 2 5h6"/></svg></div>
+        <h3>Healthcare &amp; Hospitals</h3>
+        <p>Track biomedical equipment, ward devices, and IT assets across departments with full chain-of-custody.</p>
+        <ul class="ind-list">
+          <li><svg class="icon-sm icon" viewBox="0 0 24 24"><path d="m5 12 5 5 9-9"/></svg>Medical device registry</li>
+          <li><svg class="icon-sm icon" viewBox="0 0 24 24"><path d="m5 12 5 5 9-9"/></svg>Calibration &amp; service logs</li>
+          <li><svg class="icon-sm icon" viewBox="0 0 24 24"><path d="m5 12 5 5 9-9"/></svg>Department-wise tracking</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ HOW IT WORKS ═══════════ -->
+<section class="section" id="how">
+  <div class="wrap">
+    <div class="section-head scroll-reveal">
+      <h2>Get Started in Minutes</h2>
+      <p>Simple setup, complete visibility.</p>
+    </div>
+    <div class="steps">
+      <div class="step scroll-reveal">
+        <div class="circle">1</div>
+        <h3>Bulk Upload</h3>
+        <p>Import your devices from Excel, MS Intune, or enter them manually.</p>
+      </div>
+      <div class="step scroll-reveal">
+        <div class="circle">2</div>
+        <h3>Assign &amp; Configure</h3>
+        <p>Link devices to employees, locations, and approval workflows.</p>
+      </div>
+      <div class="step scroll-reveal">
+        <div class="circle">3</div>
+        <h3>Track &amp; Monitor</h3>
+        <p>Get real-time visibility into every device movement and status.</p>
+      </div>
+      <div class="step scroll-reveal">
+        <div class="circle">4</div>
+        <h3>Stay Accountable</h3>
+        <p>Automated reports and audit-ready records, always up to date.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ADVANCED ═══════════ -->
+<section class="adv">
+  <div class="wrap adv-grid">
+    <div>
+      <h2 class="scroll-reveal">Advanced Capabilities That Set Us Apart</h2>
+      <div class="adv-item scroll-reveal">
+        <div class="ic"><svg class="icon" viewBox="0 0 24 24"><path d="M12 8V4H8"/><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M2 14h2M20 14h2M15 13v2M9 13v2"/></svg></div>
+        <div>
+          <h3>Predictive Maintenance</h3>
+          <p>Machine learning flags devices likely to fail before they do, reducing downtime by up to 40%.</p>
+        </div>
+      </div>
+      <div class="adv-item scroll-reveal">
+        <div class="ic"><svg class="icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg></div>
+        <div>
+          <h3>Microsoft Intune Sync</h3>
+          <p>Automatically pull device specs, software versions, and user assignments straight from Intune.</p>
+        </div>
+      </div>
+      <div class="adv-item scroll-reveal">
+        <div class="ic"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <div>
+          <h3>Tamper-Proof Audit Trail</h3>
+          <p>Every transaction is permanently recorded with full chain-of-custody and immutable history.</p>
+        </div>
+      </div>
+      <div class="adv-item scroll-reveal">
+        <div class="ic"><svg class="icon" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg></div>
+        <div>
+          <h3>Real-time Analytics</h3>
+          <p>Live insight into device utilization, location, and cost-optimization opportunities.</p>
+        </div>
+      </div>
+    </div>
+    <div class="adv-panel scroll-reveal">
+      <div class="metric">
+        <div class="metric-top"><span class="name">Devices Tracked</span><span class="val">24,573</span></div>
+        <div class="bar"><span style="width:92%"></span></div>
+      </div>
+      <div class="metric">
+        <div class="metric-top"><span class="name">Inventory Accuracy</span><span class="val good">98.5%</span></div>
+        <div class="bar"><span style="width:98.5%"></span></div>
+      </div>
+      <div class="metric">
+        <div class="metric-top"><span class="name">Active Transfers</span><span class="val">142</span></div>
+        <div class="bar"><span style="width:34%"></span></div>
+      </div>
+      <div class="metric">
+        <div class="metric-top"><span class="name">Pending Returns</span><span class="val">38</span></div>
+        <div class="bar"><span style="width:18%"></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ DEMO FORM ═══════════ -->
+<section class="demo-section" id="demo">
+  <div class="wrap">
+    <div class="demo-card scroll-reveal">
+      <div class="dhead">
+        <h2>See AssetLedger in Action</h2>
+        <p>Get a personalized demo tailored to your device fleet and workflows.</p>
+      </div>
+      <form id="demoForm" novalidate onsubmit="return false;">
+        <div class="form-grid">
+          <div class="field" data-validate="required">
+            <label>Full Name <span class="req">*</span></label>
+            <input type="text" name="name" placeholder="Jordan Patel" autocomplete="name">
+            <span class="err"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="err-msg">Please enter your full name.</span></span>
+          </div>
+          <div class="field" data-validate="email">
+            <label>Work Email <span class="req">*</span></label>
+            <input type="email" name="email" placeholder="jordan@company.com" autocomplete="email">
+            <span class="err"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="err-msg">Enter a valid email address.</span></span>
+          </div>
+          <div class="field" data-validate="required">
+            <label>Company Name <span class="req">*</span></label>
+            <input type="text" name="company" placeholder="Your Company Inc." autocomplete="organization">
+            <span class="err"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="err-msg">Please enter your company name.</span></span>
+          </div>
+          <div class="field" data-validate="phone">
+            <label>Contact Number <span class="req">*</span></label>
+            <input type="tel" name="phone" placeholder="+1 555 0100 200" autocomplete="tel" inputmode="tel">
+            <span class="err"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="err-msg">Enter 8–14 digits.</span></span>
+          </div>
+          <div class="field field-full" data-validate="required">
+            <label>Message <span class="req">*</span></label>
+            <textarea name="message" placeholder="Tell us about your device fleet and what you'd like to see in the demo."></textarea>
+            <span class="err"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="err-msg">Please add a short message.</span></span>
+          </div>
+        </div>
+        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;">
+        <input type="hidden" name="source" value="landing-page-demo">
+        <button class="btn btn-primary demo-submit" type="submit">Request Free Demo</button>
+        <p class="demo-note">No credit card required. Get a response within 24 hours.</p>
+      </form>
+      <div class="form-success" id="formSuccess">
+        <div class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px;"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h3>Request received</h3>
+        <p>Thanks — our team will reach out within 24 hours to schedule your demo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brand">
+          <svg viewBox="0 0 48 48" fill="none" style="width:32px;height:32px;display:block;flex:0 0 auto;">
+            <path d="M22.6 6.2 7.4 21.4a4 4 0 0 0 0 5.7l13.5 13.5a4 4 0 0 0 5.7 0L41.8 25.4a4 4 0 0 0 1.2-2.8V9.4a4 4 0 0 0-4-4H25.4a4 4 0 0 0-2.8 1.2Z" fill="#ffffff"/>
+            <circle cx="34" cy="14" r="3.4" fill="#0e2233"/>
+            <path d="M22.5 17 16.5 30.5M22.5 17V30.5M22.5 30.5H29.5" stroke="#0e2233" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M19 25.6H22.5" stroke="#14a08c" stroke-width="2.8" stroke-linecap="round"/>
+          </svg>
+          <span>Asset<span style="color:var(--primary-light)">Ledger</span></span>
+        </div>
+        <p>Office device asset tracking with bulk upload, built for IT, HR, and finance teams that need full accountability.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Product</h4>
+        <a href="#features">Features</a>
+        <a href="#industries">Industries</a>
+        <a href="#how">How It Works</a>
+        <a href="https://app.assetledger.in/login">Sign In</a>
+      </div>
+      <div class="foot-col">
+        <h4>Use Cases</h4>
+        <a href="#">IT &amp; Operations</a>
+        <a href="#">HR &amp; People Ops</a>
+        <a href="#">Finance &amp; Compliance</a>
+        <a href="#">Healthcare &amp; Hospitals</a>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <a href="#demo">Request Demo</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+    <div class="foot-bottom">© 2026 AssetLedger. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var b=document.body;
+  b.classList.add('anim-ready');
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function countUp(el){
+    var target=parseInt(el.getAttribute('data-count'),10);
+    var suffix=el.getAttribute('data-suffix')||'';
+    if(reduce){el.textContent=target.toLocaleString('en-US')+suffix;return;}
+    var dur=1400, start=null;
+    function step(ts){
+      if(!start)start=ts;
+      var p=Math.min((ts-start)/dur,1);
+      var eased=1-Math.pow(1-p,3);
+      el.textContent=Math.round(target*eased).toLocaleString('en-US')+(p>=1?suffix:'');
+      if(p<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  var triggered=false;
+  function go(){
+    if(triggered) return; triggered=true;
+    b.classList.add('loaded');
+    var stat=document.getElementById('statDevices');
+    if(stat){ setTimeout(function(){ countUp(stat); }, 380); }
+    // Safety: if the animation timeline is frozen (e.g. background tab / capture),
+    // force the reveal to its visible end-state so content never stays hidden.
+    setTimeout(function(){
+      if(document.timeline && document.timeline.currentTime === 0){
+        var s=document.createElement('style');
+        s.textContent='.anim-ready .reveal,.anim-ready .scroll-reveal{opacity:1!important;transform:none!important;transition:none!important;}';
+        document.head.appendChild(s);
+        if(stat) stat.textContent='10,000+';
+      }
+    }, 1000);
+  }
+
+  function initScroll(){
+    var items=[].slice.call(document.querySelectorAll('.scroll-reveal'));
+    if(reduce || !('IntersectionObserver' in window)){
+      items.forEach(function(el){el.classList.add('in');});
+      return;
+    }
+    // per-row stagger based on position among scroll-reveal siblings
+    items.forEach(function(el){
+      var sibs=[].slice.call(el.parentNode.children).filter(function(c){return c.classList&&c.classList.contains('scroll-reveal');});
+      var idx=sibs.indexOf(el);
+      el.style.setProperty('--sd',(idx*0.09)+'s');
+    });
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    },{threshold:0.12, rootMargin:'0px 0px -7% 0px'});
+    items.forEach(function(el){ io.observe(el); });
+  }
+  // The DOM is fully parsed (this script is at end of body), so trigger now.
+  // Two rAFs let the initial hidden state paint once so the transition animates.
+  // Never gate solely on 'load' — that event may not fire in every environment.
+  requestAnimationFrame(function(){ requestAnimationFrame(go); });
+  setTimeout(go, 250);               // timer fallback if rAF is throttled
+  window.addEventListener('load', go); // redundant; go() is idempotent
+  initScroll();
+})();
+</script>
+
+<script>
+(function(){
+  var form=document.getElementById('demoForm');
+  if(!form) return;
+  var success=document.getElementById('formSuccess');
+  var fields=[].slice.call(form.querySelectorAll('.field[data-validate]'));
+
+  function isValid(f){
+    var type=f.getAttribute('data-validate');
+    var c=f.querySelector('input,textarea');
+    var v=(c.value||'').trim();
+    if(type==='required') return v.length>0;
+    if(type==='email') return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+    if(type==='phone'){ var d=v.replace(/\D/g,''); return d.length>=8 && d.length<=14; }
+    return true;
+  }
+  function showError(f){ f.classList.remove('error'); void f.offsetWidth; f.classList.add('error'); }
+  function clearError(f){ f.classList.remove('error'); }
+
+  var ENDPOINT='https://app.assetledger.in/api/v1/enquiries';
+  var submitBtn=form.querySelector('.demo-submit');
+  var note=form.querySelector('.demo-note');
+  function val(name){ var el=form.querySelector('[name="'+name+'"]'); return el?(el.value||'').trim():''; }
+  function setFormError(msg){
+    if(!note) return;
+    note.textContent=msg;
+    note.style.color='var(--coral)';
+  }
+
+  // live-clear an error once the field becomes valid
+  fields.forEach(function(f){
+    var c=f.querySelector('input,textarea');
+    c.addEventListener('input',function(){ if(f.classList.contains('error') && isValid(f)) clearError(f); });
+    c.addEventListener('blur',function(){ if(!isValid(f) && (c.value||'').trim().length) showError(f); });
+  });
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var firstBad=null, ok=true;
+    fields.forEach(function(f){
+      if(isValid(f)){ clearError(f); }
+      else { ok=false; showError(f); if(!firstBad) firstBad=f; }
+    });
+    if(!ok){ var i=firstBad&&firstBad.querySelector('input,textarea'); if(i) i.focus(); return; }
+
+    // honeypot — silently treat bot submissions as "done" without calling the API
+    if(val('website')){ form.style.display='none'; if(success) success.classList.add('show'); return; }
+
+    // build payload (required + only non-empty optional fields)
+    var payload={ name:val('name'), email:val('email') };
+    var contact=val('phone');   if(contact) payload.contact=contact;
+    var company=val('company'); if(company) payload.company=company;
+    var comment=val('message'); if(comment) payload.comment=comment;
+    var source=val('source');   if(source)  payload.source=source;
+
+    submitBtn.disabled=true;
+    var origLabel=submitBtn.textContent;
+    submitBtn.textContent='Sending…';
+    if(note){ note.textContent='No credit card required. Get a response within 24 hours.'; note.style.color=''; }
+
+    fetch(ENDPOINT,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(payload)
+    })
+    .then(function(res){ return res.json().then(function(data){ return {ok:res.ok, data:data}; }); })
+    .then(function(r){
+      if(r.ok && r.data && r.data.success){
+        if(r.data.message){ var p=success&&success.querySelector('p'); if(p) p.textContent=r.data.message; }
+        form.style.display='none';
+        if(success) success.classList.add('show');
+      } else {
+        var msg=(r.data&&(r.data.message||r.data.detail))||'Something went wrong. Please try again.';
+        setFormError(typeof msg==='string'?msg:'Something went wrong. Please try again.');
+        submitBtn.disabled=false; submitBtn.textContent=origLabel;
+      }
+    })
+    .catch(function(){
+      setFormError('Could not reach the server. Please check your connection and try again.');
+      submitBtn.disabled=false; submitBtn.textContent=origLabel;
+    });
+  });
+})();
+</script>
+
+<script>
+/* Hero natural-language typewriter */
+(function(){
+  var el=document.getElementById('aiTyped');
+  if(!el) return;
+  var queries=[
+    'Show all laptops overdue for return in Mumbai',
+    'Which monitors were transferred last quarter?',
+    'List unassigned devices above \u20B950,000',
+    'Flag every asset missing from the last audit'
+  ];
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){ el.textContent=queries[0]; return; }
+  var qi=0, ci=0, deleting=false;
+  function tick(){
+    var q=queries[qi];
+    if(!deleting){
+      ci++;
+      el.textContent=q.slice(0,ci);
+      if(ci>=q.length){ deleting=true; return setTimeout(tick, 1700); }
+      setTimeout(tick, 46);
+    } else {
+      ci--;
+      el.textContent=q.slice(0,ci);
+      if(ci<=0){ deleting=false; qi=(qi+1)%queries.length; return setTimeout(tick, 320); }
+      setTimeout(tick, 24);
+    }
+  }
+  setTimeout(tick, 900);
+})();
+</script>
+
+<!-- ═══════════ PROMO POPUP ═══════════ -->
+<div class="promo-overlay" id="promoOverlay" role="dialog" aria-modal="true" aria-label="Special offer">
+  <div class="promo-modal">
+    <button class="promo-close" id="promoClose" aria-label="Close offer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="promo-visual">
+      <span class="promo-ribbon"><span class="dot"></span>Limited Time</span>
+      <image-slot id="promoImg" src="promo-asset.svg" fit="cover" placeholder="Drop a product image"></image-slot>
+    </div>
+    <div class="promo-body">
+      <span class="promo-eyebrow">Launch Offer</span>
+      <div class="promo-off">
+        <span class="num">60<span class="pct">%</span></span>
+        <span class="off-word">Off</span>
+      </div>
+      <h2>Save 60% on billed amount</h2>
+      <p>Onboard your entire device fleet with AssetLedger and get 60% off your first invoice. Bulk-upload thousands of assets, track them in real time, and stay audit-ready from day one.</p>
+      <button class="btn btn-primary" type="button" id="promoClaim" style="align-self:flex-start;">Claim 60% Off</button>
+      <p class="promo-fine" style="margin-top:16px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        Applies to your first invoice. No credit card required.
+      </p>
+    </div>
+  </div>
+</div>
+
+<script src="image-slot.js"></script>
+<script>
+(function(){
+  var overlay=document.getElementById('promoOverlay');
+  if(!overlay) return;
+  var closeBtn=document.getElementById('promoClose');
+  var claim=document.getElementById('promoClaim');
+
+  function open(){ overlay.classList.add('open'); }
+  function close(){ overlay.classList.remove('open'); }
+
+  // show shortly after load
+  setTimeout(open, 1100);
+
+  closeBtn.addEventListener('click', close);
+  overlay.addEventListener('click', function(e){ if(e.target===overlay) close(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && overlay.classList.contains('open')) close(); });
+
+  // Claim → close popup and jump to the demo form
+  claim.addEventListener('click', function(){
+    close();
+    var target=document.getElementById('demo');
+    if(target){
+      setTimeout(function(){
+        var y=target.getBoundingClientRect().top + window.pageYOffset - 16;
+        window.scrollTo({top:y, behavior:'smooth'});
+        var first=document.querySelector('#demoForm input[name="name"]');
+        if(first) setTimeout(function(){ first.focus({preventScroll:true}); }, 600);
+      }, 280);
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

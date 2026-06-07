@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AssetLedger — Logo Concepts</title>
+<style>
+:root{
+  --primary:#0d7d6e;
+  --primary-light:#14a08c;
+  --navy:#0e2233;
+  --navy-2:#13293c;
+  --border:#dfe4e6;
+  --fg-1:#0d1c26;
+  --fg-4:#6a7a84;
+  --font-sans:'Segoe UI',-apple-system,BlinkMacSystemFont,'Tahoma','Geneva','Verdana',sans-serif;
+}
+*{box-sizing:border-box;}
+body{margin:0;font-family:var(--font-sans);}
+
+/* ── artboard inner styling ── */
+.ab{display:flex;flex-direction:column;height:100%;background:#fff;}
+.ab .hero-mark{flex:0 0 auto;padding:38px 0 34px;display:flex;align-items:center;justify-content:center;}
+.ab .hero-mark svg{width:88px;height:88px;display:block;}
+.row{padding:18px 26px;border-top:1px solid var(--border);display:flex;align-items:center;gap:14px;}
+.row.dark{background:var(--navy);border-top:none;}
+.lockup{display:flex;align-items:center;gap:11px;}
+.lockup svg{width:34px;height:34px;display:block;flex:0 0 auto;}
+.wm{font-size:23px;font-weight:700;letter-spacing:-.5px;color:var(--fg-1);}
+.wm .t{color:var(--primary);}
+.dark .wm{color:#fff;}
+.dark .wm .t{color:var(--primary-light);}
+.caption{padding:14px 26px 4px;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--fg-4);}
+.concept-name{padding:0 26px 16px;font-size:13.5px;color:var(--fg-4);line-height:1.5;}
+.favs{padding:16px 26px 24px;display:flex;gap:12px;border-top:1px solid var(--border);}
+.fav{width:46px;height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);}
+.fav svg{width:28px;height:28px;display:block;}
+.fav.teal{background:var(--primary);border-color:var(--primary);}
+.fav.navy{background:var(--navy);border-color:var(--navy);}
+.fav.white{background:#fff;}
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+
+<!-- ════════ SVG MARK DEFINITIONS ════════ -->
+<script type="text/babel">
+// Each mark takes a `v` prop for color variant: 'duo' (teal+navy), 'mono-white', 'mono-navy', 'mono-teal'
+function col(v){
+  if(v==='mono-white') return {a:'#fff', b:'#fff', c:'#0e2233'};   // a=primary shape, b=accent, c=knockout
+  if(v==='mono-navy')  return {a:'#0e2233', b:'#0e2233', c:'#fff'};
+  if(v==='mono-teal')  return {a:'#0d7d6e', b:'#0d7d6e', c:'#fff'};
+  return {a:'#0e2233', b:'#0d7d6e', c:'#fff'}; // duo
+}
+
+// 1 — LOCATOR : map pin + asset chip + check (location tracking)
+function MarkLocator({v}){const{a,b,c}=col(v);return(
+  <svg viewBox="0 0 48 48" fill="none">
+    <path d="M24 3.5C15.4 3.5 8.5 10.4 8.5 19c0 9.9 12.4 22.4 14.4 24.4a1.6 1.6 0 0 0 2.2 0C27.1 41.4 39.5 28.9 39.5 19 39.5 10.4 32.6 3.5 24 3.5Z" fill={a}/>
+    <circle cx="24" cy="18.5" r="9" fill={b}/>
+    <path d="M19.6 18.7l3 3 5.6-5.8" stroke={c} strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+)}
+
+// 2 — SHIELD : audit / trust shield with check
+function MarkShield({v}){const{a,b,c}=col(v);return(
+  <svg viewBox="0 0 48 48" fill="none">
+    <path d="M24 3.5 7.5 9.3v11.4C7.5 31 14.6 39.6 24 44c9.4-4.4 16.5-13 16.5-23.3V9.3L24 3.5Z" fill={a}/>
+    <path d="M16.5 24.2l5.3 5.3L31.8 18" stroke={b} strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+)}
+
+// 3 — PING : asset box with broadcast / tracking signal
+function MarkPing({v}){const{a,b,c}=col(v);return(
+  <svg viewBox="0 0 48 48" fill="none">
+    <rect x="6.5" y="16.5" width="23" height="23" rx="5" fill={a}/>
+    <path d="M18 28.5h4M18 32.5h7" stroke={c} strokeWidth="2" strokeLinecap="round"/>
+    <circle cx="35" cy="13" r="3.6" fill={b}/>
+    <path d="M30.7 13a4.3 4.3 0 0 1 8.6 0" stroke={b} strokeWidth="2.2" strokeLinecap="round"/>
+    <path d="M27.4 13a7.6 7.6 0 0 1 15.2 0" stroke={b} strokeWidth="2.2" strokeLinecap="round" opacity=".5"/>
+  </svg>
+)}
+
+// 4 — MONOGRAM : rounded tile, "A" as upward tracked path
+function MarkMono({v}){const{a,b,c}=col(v);return(
+  <svg viewBox="0 0 48 48" fill="none">
+    <rect x="4" y="4" width="40" height="40" rx="10" fill={a}/>
+    <path d="M24 12.5 33.5 35h-5.2l-1.85-4.6h-4.9L19.7 35H14.5L24 12.5Z" fill={c}/>
+    <path d="M22.5 26.2h3l-1.5-3.8-1.5 3.8Z" fill={a}/>
+    <circle cx="24" cy="12.5" r="3.4" fill={b}/>
+  </svg>
+)}
+
+// 5 — TAG : asset tag + pulse line (real-time tracking)
+function MarkTag({v}){const{a,b,c}=col(v);return(
+  <svg viewBox="0 0 48 48" fill="none">
+    <path d="M22.6 6.2 7.4 21.4a4 4 0 0 0 0 5.7l13.5 13.5a4 4 0 0 0 5.7 0L41.8 25.4a4 4 0 0 0 1.2-2.8V9.4a4 4 0 0 0-4-4H25.4a4 4 0 0 0-2.8 1.2Z" fill={a}/>
+    <circle cx="34" cy="14" r="3.4" fill={c}/>
+    <path d="M14 26h4l2.5-5 3.5 9 2.5-4h4" stroke={b} strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+)}
+
+// ───────── AI · SECURE · PROFESSIONAL set ─────────
+// 6 — AI SHIELD : secure shield + AI spark (secure + AI + professional)
+function MarkAIShield({v}){const{a,b,c}=col(v);return(
+  <svg viewBox="0 0 48 48" fill="none">
+    <path d="M24 3.5 7.5 9.3v11.4C7.5 31 14.6 39.6 24 44c9.4-4.4 16.5-13 16.5-23.3V9.3L24 3.5Z" fill={a}/>
+    <path d="M23 13.5c.6 4.2 1.8 5.4 6 6-4.2.6-5.4 1.8-6 6-.6-4.2-1.8-5.4-6-6 4.2-.6 5.4-1.8 6-6Z" fill={b}/>
+    <path d="M31 23.5c.3 2 .9 2.6 2.9 2.9-2 .3-2.6.9-2.9 2.9-.3-2-.9-2.6-2.9-2.9 2-.3 2.6-.9 2.9-2.9Z" fill={b} opacity=".7"/>
+  </svg>
+)}
+
+// 7 — SMART LOCATOR : pin + AI spark (tracking + AI)
+function MarkSmartPin({v}){const{a,b,c}=col(v);return(
+  <svg viewBox="0 0 48 48" fill="none">
+    <path d="M24 3.5C15.4 3.5 8.5 10.4 8.5 19c0 9.9 12.4 22.4 14.4 24.4a1.6 1.6 0 0 0 2.2 0C27.1 41.4 39.5 28.9 39.5 19 39.5 10.4 32.6 3.5 24 3.5Z" fill={a}/>
+    <path d="M24 11c.7 5 2.1 6.4 7.1 7.1-5 .7-6.4 2.1-7.1 7.1-.7-5-2.1-6.4-7.1-7.1 5-.7 6.4-2.1 7.1-7.1Z" fill={b}/>
+  </svg>
+)}
+
+// 8 — SECURE HEX : hexagon (professional/tech) + check + spark
+function MarkHex({v}){const{a,b,c}=col(v);return(
+  <svg viewBox="0 0 48 48" fill="none">
+    <path d="M24 3.6 39.7 12.8v18.4L24 40.4 8.3 31.2V12.8L24 3.6Z" fill={a}/>
+    <path d="M17 24l4.6 4.6L30.5 18" stroke={b} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M32.5 11.5c.3 2.2 1 2.9 3.2 3.2-2.2.3-2.9 1-3.2 3.2-.3-2.2-1-2.9-3.2-3.2 2.2-.3 2.9-1 3.2-3.2Z" fill={b}/>
+  </svg>
+)}
+
+// 9 — NEURAL MONOGRAM : tile, "A" + AI node accent
+function MarkNeuralMono({v}){const{a,b,c}=col(v);return(
+  <svg viewBox="0 0 48 48" fill="none">
+    <rect x="4" y="4" width="40" height="40" rx="10" fill={a}/>
+    <path d="M24 13 33.5 35h-5.2l-1.85-4.6h-4.9L19.7 35H14.5L24 13Z" fill={c}/>
+    <path d="M22.5 26.2h3l-1.5-3.8-1.5 3.8Z" fill={a}/>
+    <path d="M24 9c.4 2.7 1.1 3.4 3.8 3.8C25.1 13.2 24.4 13.9 24 16.6c-.4-2.7-1.1-3.4-3.8-3.8C22.9 12.4 23.6 11.7 24 9Z" fill={b}/>
+  </svg>
+)}
+
+const MARKS_AI = [
+  {id:'aishield', Mark:MarkAIShield, name:'AI Shield', desc:'Secure shield with an AI spark at its core. Says professional, protected, and intelligent in one mark — the strongest all-three fusion.'},
+  {id:'smartpin', Mark:MarkSmartPin, name:'Smart Locator', desc:'The locator pin, now with an AI spark instead of a check — tracking driven by intelligence.'},
+  {id:'hex', Mark:MarkHex, name:'Secure Hex', desc:'A hexagon reads precise and technical; the verified check plus spark add security and AI cues.'},
+  {id:'neuralmono', Mark:MarkNeuralMono, name:'AI Monogram', desc:'The "A" tile crowned with an AI spark. Cleanest as an app icon while signalling intelligence.'},
+];
+
+// ───────── ASSET TAG + AL set (featured) ─────────
+// T1 — TAG · AL : asset-tag shape stamped with the AL monogram + hole
+function MarkTagAL({v}){const{a,b,c}=col(v);return(
+  <svg viewBox="0 0 48 48" fill="none">
+    <path d="M22.6 6.2 7.4 21.4a4 4 0 0 0 0 5.7l13.5 13.5a4 4 0 0 0 5.7 0L41.8 25.4a4 4 0 0 0 1.2-2.8V9.4a4 4 0 0 0-4-4H25.4a4 4 0 0 0-2.8 1.2Z" fill={a}/>
+    <circle cx="34" cy="14" r="3.4" fill={c}/>
+    <path d="M22.5 17 16.5 30.5M22.5 17V30.5M22.5 30.5H29.5" stroke={c} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M19 25.6H22.5" stroke={b} strokeWidth="2.8" strokeLinecap="round"/>
+  </svg>
+)}
+
+// T2 — TAG · AL · PULSE : initials over a live pulse line (tracking)
+function MarkTagALPulse({v}){const{a,b,c}=col(v);return(
+  <svg viewBox="0 0 48 48" fill="none">
+    <path d="M22.6 6.2 7.4 21.4a4 4 0 0 0 0 5.7l13.5 13.5a4 4 0 0 0 5.7 0L41.8 25.4a4 4 0 0 0 1.2-2.8V9.4a4 4 0 0 0-4-4H25.4a4 4 0 0 0-2.8 1.2Z" fill={a}/>
+    <circle cx="34" cy="14" r="3.4" fill={c}/>
+    <path d="M22.5 15 17 26M22.5 15V26M22.5 26H28.5" stroke={c} strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M14.5 32h3.2l2-4 2.8 7 2-3h4" stroke={b} strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+)}
+
+const MARKS_TAGAL = [
+  {id:'tagal', Mark:MarkTagAL, name:'Tag · AL', desc:'The asset-tag silhouette stamped with the AL monogram and the tag hole — your ledger identity and the initials in one clean mark.'},
+  {id:'tagalpulse', Mark:MarkTagALPulse, name:'Tag · AL · Pulse', desc:'Same tag and initials with a live pulse line beneath — adds the real-time tracking signal.'},
+];
+
+// ───────── A + L MONOGRAM set ─────────
+// Shared AL letterform: vertical = A's left leg AND L's stem · diagonal = A's right leg · crossbar = A's bar (teal) · foot = L
+// 10 — AL TILE
+function MarkAL({v}){const{a,b,c}=col(v);return(
+  <svg viewBox="0 0 48 48" fill="none">
+    <rect x="4" y="4" width="40" height="40" rx="10" fill={a}/>
+    <path d="M23.5 13 14 35M23.5 13V35M23.5 35H33.5" stroke={c} strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M18.5 26.5H23.5" stroke={b} strokeWidth="3.6" strokeLinecap="round"/>
+  </svg>
+)}
+
+// 11 — AL SHIELD : initials inside a secure shield
+function MarkALShield({v}){const{a,b,c}=col(v);return(
+  <svg viewBox="0 0 48 48" fill="none">
+    <path d="M24 3.5 7.5 9.3v11.4C7.5 31 14.6 39.6 24 44c9.4-4.4 16.5-13 16.5-23.3V9.3L24 3.5Z" fill={a}/>
+    <path d="M24 12.5 15.5 32.5M24 12.5V32.5M24 32.5H32" stroke={c} strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M19.5 24H24" stroke={b} strokeWidth="3.2" strokeLinecap="round"/>
+  </svg>
+)}
+
+// 12 — AL SPARK : initials + AI spark
+function MarkALSpark({v}){const{a,b,c}=col(v);return(
+  <svg viewBox="0 0 48 48" fill="none">
+    <rect x="4" y="4" width="40" height="40" rx="10" fill={a}/>
+    <path d="M22 16 13 37M22 16V37M22 37H31" stroke={c} strokeWidth="3.8" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M17.2 28H22" stroke={b} strokeWidth="3.4" strokeLinecap="round"/>
+    <path d="M33.5 10.5c.4 3 1.2 3.8 4.2 4.2-3 .4-3.8 1.2-4.2 4.2-.4-3-1.2-3.8-4.2-4.2 3-.4 3.8-1.2 4.2-4.2Z" fill={b}/>
+  </svg>
+)}
+
+const MARKS_AL = [
+  {id:'altile', Mark:MarkAL, name:'AL Monogram', desc:'A and L share one letterform — the vertical is both the A\u2019s leg and the L\u2019s stem, the teal bar is the A\u2019s crossbar, the foot completes the L. Clean and balanced.'},
+  {id:'alshield', Mark:MarkALShield, name:'AL Shield', desc:'The AL monogram set inside a secure shield — initials plus the trust and audit cue in one mark.'},
+  {id:'alspark', Mark:MarkALSpark, name:'AL + AI Spark', desc:'The AL monogram crowned with an AI spark — initials, intelligence, and a professional tile together.'},
+];
+
+const MARKS = [
+  {id:'locator', Mark:MarkLocator, name:'Locator', desc:'A map pin holding a verified asset chip — location tracking made literal. Reads instantly at any size.'},
+  {id:'shield',  Mark:MarkShield,  name:'Custody Shield', desc:'Trust and audit-readiness front and center. The most enterprise-safe, closest to the current mark.'},
+  {id:'ping',    Mark:MarkPing,    name:'Signal', desc:'A registered device broadcasting its status — emphasizes real-time, connected tracking.'},
+  {id:'mono',    Mark:MarkMono,    name:'Monogram', desc:'An "A" drawn as an upward tracked path inside a tile. Compact, strong as an app icon / favicon.'},
+  {id:'tag',     Mark:MarkTag,     name:'Asset Tag', desc:'A physical asset tag with a live pulse — bulk inventory plus real-time signal in one mark.'},
+];
+
+function Artboard({Mark, name, desc, id}){
+  return (
+    <div className="ab">
+      <div className="hero-mark"><Mark v="duo"/></div>
+      <div className="caption">Primary lockup</div>
+      <div className="concept-name" style={{paddingBottom:'12px'}}>{desc}</div>
+      <div className="row">
+        <div className="lockup"><Mark v="duo"/><span className="wm">Asset<span className="t">Ledger</span></span></div>
+      </div>
+      <div className="row dark">
+        <div className="lockup"><Mark v="mono-white"/><span className="wm">Asset<span className="t">Ledger</span></span></div>
+      </div>
+      <div className="favs">
+        <div className="fav white"><Mark v="duo"/></div>
+        <div className="fav navy"><Mark v="mono-white"/></div>
+        <div className="fav teal"><Mark v="mono-white"/></div>
+      </div>
+    </div>
+  );
+}
+
+function App(){
+  return (
+    <DesignCanvas>
+      <DCSection id="tagal" title="Asset Tag + AL" subtitle="Your asset-tag mark stamped with the AssetLedger initials — the direction you flagged">
+        {MARKS_TAGAL.map(m=>(
+          <DCArtboard key={m.id} id={m.id} label={m.name} width={340} height={560}>
+            <Artboard Mark={m.Mark} name={m.name} desc={m.desc} id={m.id}/>
+          </DCArtboard>
+        ))}
+      </DCSection>
+      <DCSection id="concepts" title="AssetLedger — Logo Concepts" subtitle="Five directions · teal + navy · flat, geometric · works light/dark and at favicon size">
+        {MARKS.map(m=>(
+          <DCArtboard key={m.id} id={m.id} label={m.name} width={340} height={560}>
+            <Artboard Mark={m.Mark} name={m.name} desc={m.desc} id={m.id}/>
+          </DCArtboard>
+        ))}
+      </DCSection>
+      <DCSection id="aisecure" title="AI · Secure · Professional" subtitle="Shields & hexes for trust + AI sparks for intelligence — same teal + navy system">
+        {MARKS_AI.map(m=>(
+          <DCArtboard key={m.id} id={m.id} label={m.name} width={340} height={560}>
+            <Artboard Mark={m.Mark} name={m.name} desc={m.desc} id={m.id}/>
+          </DCArtboard>
+        ))}
+      </DCSection>
+      <DCSection id="alset" title="A + L Monogram" subtitle="The AssetLedger initials as one mark — plus secure and AI variants">
+        {MARKS_AL.map(m=>(
+          <DCArtboard key={m.id} id={m.id} label={m.name} width={340} height={560}>
+            <Artboard Mark={m.Mark} name={m.name} desc={m.desc} id={m.id}/>
+          </DCArtboard>
+        ))}
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>
