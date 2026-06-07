@@ -61,7 +61,8 @@
 }
 
 *{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%;}
+html,body{overflow-x:hidden;max-width:100%;}
 body{
   font-family:var(--font-sans);
   background:var(--app-bg);
@@ -138,11 +139,11 @@ header{
 .ai-bar{
   display:flex;align-items:center;gap:12px;
   background:var(--surface);border:1px solid var(--border);
-  border-radius:var(--radius);padding:15px 16px;margin-bottom:22px;max-width:540px;
+  border-radius:var(--radius);padding:15px 16px;margin-bottom:22px;max-width:540px;width:100%;
   box-shadow:0 10px 30px -22px rgba(14,34,51,.45);
 }
 .ai-bar .ai-spark{width:20px;height:20px;flex:0 0 auto;color:var(--primary);}
-.ai-bar .ai-q{flex:1;min-width:0;font-size:15.5px;color:var(--fg-2);font-weight:500;white-space:nowrap;overflow:hidden;}
+.ai-bar .ai-q{flex:1 1 0;min-width:0;font-size:15.5px;color:var(--fg-2);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:clip;}
 .ai-bar .ai-cursor{display:inline-block;width:2px;height:1.05em;vertical-align:-2px;background:var(--primary);margin-left:1px;animation:alBlink 1s steps(1) infinite;}
 @keyframes alBlink{50%{opacity:0;}}
 .ai-bar .ai-mcp{
@@ -328,6 +329,28 @@ footer{background:var(--navy);color:#fff;padding:64px 0 36px;}
   .foot-grid{grid-template-columns:1fr 1fr;gap:32px;}
   .nav-links{display:none;}
   .hero h1{font-size:40px;}
+}
+
+/* Mobile: prevent iOS focus-zoom (inputs must be >=16px) & keep hero AI bar tidy */
+@media (max-width:600px){
+  .field input,.field textarea,.promo-form input{font-size:16px;}
+  .wrap{padding:0 18px;}
+  .nav{height:60px;}
+  .brand{font-size:17px;gap:8px;}
+  .brand svg{width:28px;height:28px;}
+  .nav-actions{gap:8px;}
+  .btn-sm{padding:9px 13px;font-size:13px;}
+  .ai-bar{padding:13px 14px;gap:10px;}
+  .ai-bar .ai-q{font-size:14.5px;}
+  .hero{padding:48px 0 60px;}
+  .hero h1{font-size:32px;letter-spacing:-.6px;}
+  .hero-sub{font-size:16px;}
+  .pill.pill-ai{white-space:normal;line-height:1.4;font-size:12px;padding:7px 13px;}
+  .hero-cta{gap:10px;}
+  .hero-cta .btn{flex:1 1 auto;justify-content:center;}
+}
+@media (max-width:380px){
+  .nav-actions .btn-outline{display:none;}
 }
 
 /* ───────────── Hero animations ───────────── */
